@@ -4,10 +4,10 @@
                     <div class="media flex-column flex-md-row align-items-center">
 
                         {{ if .Site.Params.profile.avatar }}
-                        <img class="resume-profile-image mb-md-0 mr-md-5 ml-md-0 rounded mx-auto" src="{{ .Site.BaseURL }}assets/images/{{ .Site.Params.profile.avatar }}" alt="Profile image" >
+                        <img class="resume-profile-image mb-sm-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto" src="{{ .Site.BaseURL }}assets/images/{{ .Site.Params.profile.avatar }}" alt="Profile image" >
                         {{ end }}
 
-                        <div class="media-body text-left">
+                        <div class="media-body text-left mt-sm-3">
                             <p class="mb-0">{{ .Site.Params.summary.text | markdownify }}</p>
                         </div><!--//media-body-->
 
