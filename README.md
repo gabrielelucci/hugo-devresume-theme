@@ -26,8 +26,8 @@ with some tweaks to suit my needs.
 ### Changes
 
 - Improved layout for small devices
+- Fonts, using Anonymous Pro for paragraphs and Comfortaa for titles
 - Everything is bundled and managed by npm
-
 
 ## Getting Started
 
