@@ -8,10 +8,8 @@
     <meta name="description" content="{{ .Site.Params.description }}">
     <meta name="author" content="{{ .Site.Params.author }}">
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.svg">
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900">
     <!-- Theme SCSS -->
-    {{ $style := resources.Get "scss/devresume.scss" | resources.ExecuteAsTemplate "scss/devresume.scss" . | toCSS (dict "targetPath" "assets/css/devresume.css") | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "scss/style.scss" . | toCSS (dict "targetPath" "assets/css/style.css"  "outputStyle" "compressed" "enableSourceMap" false) | fingerprint }}
+    <link rel="stylesheet" type="text/css"  href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
