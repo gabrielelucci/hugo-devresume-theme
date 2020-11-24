@@ -1,15 +1,15 @@
 # Hugo DevResume Theme
 
-This is a slight re-design of [DevResume](cowboysmall-tools/hugo-devresume-theme) - a great looking resume/CV template 
+This is a slight re-design of [DevResume](//github.com/xriley/DevResume-Theme) - a great looking resume/CV template 
 designed for developers by Xiaoying Riley. 
 
-This is based on [Jerry Kiely's Hugo port](/github.com/cowboysmall-tools/hugo-devresume-theme), 
+This is based on [Jerry Kiely's Hugo port](//github.com/cowboysmall-tools/hugo-devresume-theme), 
 with some tweaks to suit my needs.
 
 
 ## Screenshot
 
-![DevResume screenshot]()
+![DevResume screenshot](images/screenshot.png)
 
 
 ## Features
@@ -65,4 +65,4 @@ Or you can generate your site wih:
 
 Copyright (C) 2020 Gabriele Lucci
 
-Licensed under [MIT]() except where noted.
+Licensed under [MIT](LICENSE) except where noted.
