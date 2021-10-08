@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "@fontsource/anonymous-pro": "^4.5.0",
+    "@fontsource/comfortaa": "^4.5.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
-    "bootstrap": "^4.5.3",
-    "fontsource-anonymous-pro": "^3.0.9",
-    "fontsource-comfortaa": "^3.0.5"
+    "bootstrap": "^4.5.3"
   }
 }

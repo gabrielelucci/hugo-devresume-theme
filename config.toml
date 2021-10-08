@@ -25,9 +25,9 @@ source = "node_modules/@fortawesome/fontawesome-free/webfonts"
 target = "static/assets/css/webfonts"
 
 [[module.mounts]]
-source = "node_modules/fontsource-anonymous-pro"
+source = "node_modules/@fontsource/anonymous-pro"
 target = "static/assets/css/fontsource-anonymous-pro"
 
 [[module.mounts]]
-source = "node_modules/fontsource-comfortaa"
+source = "node_modules/@fontsource/comfortaa"
 target = "static/assets/css/fontsource-comfortaa"
