@@ -11,8 +11,8 @@
 
 /*************************** Theme Colours****************************/
 // Define theme colour scheme
-$theme-color-primary: {{ .Site.Params.primaryColor | default "#54B689" }};
-$theme-text-color-primary: {{ .Site.Params.textPrimaryColor | default "#292929" }};
+$theme-color-primary: #B75D69;
+$theme-text-color-primary: #292929;
 $theme-text-color-secondary: lighten($theme-text-color-primary, 15%);
 $theme-text-color-light: lighten($theme-text-color-primary, 40%);
 $theme-border-color: lighten($theme-text-color-primary, 60%);
@@ -35,7 +35,7 @@ $theme-colors: (
 );
 
 $font-titles: "Comfortaa", sans-serif;
-$font-paragraphs: "Anonymous Pro", monospace;
+$font-paragraphs: "Inconsolata Variable", sans-serif;
 
 /*************************** Import Stuff *************************************/
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
@@ -44,7 +44,7 @@ $fa-font-path: "./webfonts";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import url("fontsource-anonymous-pro/latin.css");
+@import url("fontsource-inconsolata/index.css");
 @import url("fontsource-comfortaa/latin.css");
 
 /*************************** DevResume Styles *********************************/
@@ -92,7 +92,7 @@ a.theme-link {
 .resume-section-heading {
   position: relative;
   padding-left: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   letter-spacing: 0.10rem;
   color: $theme-color-primary;
 
@@ -119,14 +119,14 @@ a.theme-link {
   }
 
   .resume-tagline {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 }
 
 .resume-contact {
   border-left: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 a.resume-link {
@@ -142,20 +142,20 @@ a.resume-link {
 }
 
 .resume-intro {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .resume-main {
   .item-title {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   .item-meta {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 
   .item-content {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 }
 
@@ -163,7 +163,7 @@ a.resume-link {
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 
   .item {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .item-title {
@@ -173,20 +173,20 @@ a.resume-link {
 }
 
 .resume-education-list, .resume-awards-list {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 
 .resume-degree-time-org, .resume-degree-time {
-  font-size: 0.75rem;
+  font-size:  0.875rem;
 }
 
 .resume-lang-list, .resume-interests-list {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .resume-social-list {
-  font-size: 0.75rem;
+  font-size:  0.875rem;
 }
 
 .fa-heart {
