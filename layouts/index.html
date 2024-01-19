@@ -1,95 +1,79 @@
 <!DOCTYPE html>
 
 <html lang="{{ .Site.LanguageCode }}">
-
 <head>
-
-    {{ partial "head.html" . }}
-
+  {{ partial "head.html" . }}
 </head>
 
 <body>
+  <div class="main-wrapper">
+    <div class="container-xl px-0 py-0 py-xl-3">
+      <article class="resume-wrapper mx-auto theme-bg-light p-3 px-lg-5 shadow">
+        {{ partial "header.html" . }}
+        <hr>
+        {{ if .Site.Params.summary.enable }}
+        {{ partial "summary.html" . }}
+        {{ end }}
+        <hr>
+        <div class="resume-body row">
+          <div class="resume-main col-12 col-lg-9 pr-lg-5">
 
-    <div class="main-wrapper">
+            {{ if .Site.Params.experience.enable }}
+            {{ partial "experience.html" . }}
+            {{ end }}
 
-        <div class="container-md p-0 py-md-5 px-lg-5">
+            {{ if .Site.Params.projects.enable }}
+            {{ partial "projects.html" . }}
+            {{ end }}
 
-            <article class="resume-wrapper mx-auto theme-bg-light px-5 pt-5 pt-md-3 pb-3 shadow">
+            {{ if .Site.Params.information.enable }}
+            {{ partial "information.html" . }}
+            {{ end }}
 
-                {{ partial "header.html" . }}
+          </div><!--//resume-main-->
+          <aside class="resume-aside d-flex d-lg-inline row col-12 col-lg-3 px-lg-3">
 
-                <hr>
+            {{ if .Site.Params.education.enable }}
+            <div class="col col-md-4 col-lg-12">
+              {{ partial "education.html" . }}
+            </div>
+            {{ end }}
 
-                {{ if .Site.Params.summary.enable }}
-                {{ partial "summary.html" . }}
-                {{ end }}
+            {{ if .Site.Params.awards.enable }}
+            <div class="col col-md-4 col-lg-12">
+              {{ partial "awards.html" . }}
+            </div>
+            {{ end }}
 
-                <hr>
+            {{ if .Site.Params.skills.enable }}
+            <div class="col col-md-4 col-lg-12">
+              {{ partial "skills.html" . }}
+            </div>
+            {{ end }}
 
-                <div class="resume-body">
+            {{ if .Site.Params.languages.enable }}
+            <div class="col col-md-4 col-lg-12">
+              {{ partial "languages.html" . }}
+            </div>
+            {{ end }}
 
-                    <div class="row">
+            {{ if .Site.Params.interests.enable }}
+            <div class="col col-md-4 col-lg-12">
+              {{ partial "interests.html" . }}
+            </div>
+            {{ end }}
 
-                        <div class="resume-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
-
-                            {{ if .Site.Params.experience.enable }}
-                            {{ partial "experience.html" . }}
-                            {{ end }}
-
-                            {{ if .Site.Params.projects.enable }}
-                            {{ partial "projects.html" . }}
-                            {{ end }}
-
-                            {{ if .Site.Params.information.enable }}
-                            {{ partial "information.html" . }}
-                            {{ end }}
-
-                        </div><!--//resume-main-->
-
-                        <aside class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
-
-                            {{ if .Site.Params.education.enable }}
-                            {{ partial "education.html" . }}
-                            {{ end }}
-
-                            {{ if .Site.Params.awards.enable }}
-                            {{ partial "awards.html" . }}
-                            {{ end }}
-
-                            {{ if .Site.Params.skills.enable }}
-                            {{ partial "skills.html" . }}
-                            {{ end }}
-
-                            {{ if .Site.Params.languages.enable }}
-                            {{ partial "languages.html" . }}
-                            {{ end }}
-
-                            {{ if .Site.Params.interests.enable }}
-                            {{ partial "interests.html" . }}
-                            {{ end }}
-
-                        </aside><!--//resume-aside-->
-
-                    </div><!--//row-->
-
-                </div><!--//resume-body-->
-
-                <hr class="d-print-none">
-
-                {{ if .Site.Params.social.enable }}
-                {{ partial "social.html" . }}
-                {{ end }}
-
-            </article>
-
-        </div><!--//container-->
-
-        {{ partial "footer.html" . }}
-
-    </div><!--//main-wrapper-->
-
-    {{ partial "scripts.html" . }}
-
+          </aside><!--//resume-aside-->
+        </div><!--//resume-body-->
+        <hr class="d-print-none">
+        {{ if .Site.Params.social.enable }}
+        {{ partial "social.html" . }}
+        {{ end }}
+      </article>
+    </div><!--//container-->
+    {{ partial "footer.html" . }}
+  </div><!--//main-wrapper-->
+  {{ partial "scripts.html" . }}
 </body>
 
 </html>
