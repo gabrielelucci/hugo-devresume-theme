@@ -25,8 +25,8 @@ source = "node_modules/@fortawesome/fontawesome-free/webfonts"
 target = "static/assets/css/webfonts"
 
 [[module.mounts]]
-source = "node_modules/@fontsource/anonymous-pro"
-target = "static/assets/css/fontsource-anonymous-pro"
+source = "node_modules/@fontsource-variable/inconsolata"
+target = "static/assets/css/fontsource-inconsolata"
 
 [[module.mounts]]
 source = "node_modules/@fontsource/comfortaa"
