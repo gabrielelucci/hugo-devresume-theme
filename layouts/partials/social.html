@@ -1,15 +1,15 @@
+<hr class="d-print-none">
+<div class="resume-footer text-center d-print-none">
 
-                <div class="resume-footer text-center d-print-none">
+  <ul class="resume-social-list list-inline mx-auto mb-0 d-inline-block text-muted">
+    {{ range .Site.Params.social.list }}
+    <li class="list-inline-item mb-lg-0 me-3">
+      <a class="resume-link" href="{{ .url }}" target="_blank" rel="me">
+        <i class="{{ .icon }} fa-2x me-2" data-fa-transform="down-4"></i>
+        <span class="d-none text-muted">{{ .title }}</span>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
 
-                    <ul class="resume-social-list list-inline mx-auto mb-0 d-inline-block text-muted">
-                        {{ range .Site.Params.social.list }}
-                        <li class="list-inline-item mb-lg-0 mr-3">
-                            <a class="resume-link" href="{{ .url }}" target="_blank" rel="me">
-                                <i class="{{ .icon }} fa-2x mr-2" data-fa-transform="down-4"></i>
-                                <span class="d-none text-muted">{{ .title }}</span>
-                            </a>
-                        </li>
-                        {{ end }}
-                    </ul>
-
-                </div><!--//resume-footer-->
+</div><!--//resume-footer-->

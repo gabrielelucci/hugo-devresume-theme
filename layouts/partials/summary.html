@@ -1,16 +1,12 @@
-
-                <div class="resume-intro py-3">
-
-                    <div class="media flex-column flex-md-row align-items-center">
-
-                        {{ if .Site.Params.profile.avatar }}
-                        <img class="resume-profile-image mb-3 mx-md-0 mr-md-5 ml-md-0 rounded mx-auto" src="{{ .Site.BaseURL }}assets/images/{{ .Site.Params.profile.avatar }}" alt="Profile image" >
-                        {{ end }}
-
-                        <div class="media-body text-left mt-3 my-md-0">
-                            <p class="mb-0">{{ .Site.Params.summary.text | markdownify }}</p>
-                        </div><!--//media-body-->
-
-                    </div>
-
-                </div><!--//resume-intro-->
+<hr>
+<div class="resume-intro">
+  <div class="media flex-column flex-md-row align-items-center">
+    {{ if .Site.Params.profile.avatar }}
+    <img class="resume-profile-image mb-3 mx-md-0 me-md-5 ms-md-0 rounded mx-auto"
+      src="{{ .Site.BaseURL }}assets/images/{{ .Site.Params.profile.avatar }}" alt="Profile image">
+    {{ end }}
+    <div class="media-body text-start mt-3 my-md-0">
+      {{ .Site.Params.summary.text | markdownify }}
+    </div>
+  </div>
+</div>

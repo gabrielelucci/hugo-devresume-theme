@@ -1,16 +1,23 @@
+<footer class="footer text-center py-3 d-print-none">
 
-        <footer class="footer text-center py-3 d-print-none">
+  <!--/*
+  This template is released under the Creative Commons Attribution 3.0 License.
+  Please keep the attribution link below when using for your own project.
+  Thank you for your support. :)
+  If you'd like to use the template without the attribution,
+  you can buy the commercial license via our website: themes.3rdwavemedia.com
+  */-->
 
-            <!--/*
-                This template is released under the Creative Commons Attribution 3.0 License.
-                Please keep the attribution link below when using for your own project.
-                Thank you for your support. :)
-                If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com
-            */-->
-
-            <small class="copyright text-muted">Originally designed by <a class="theme-link" href="https://github.com/xriley/DevResume-Theme" target="_blank">Xiaoying Riley</a>, remixed by myself. </a></small>
-            <br>
-            <small class="copyright text-muted">Originally ported to Hugo by <a class="theme-link" href="https://github.com/cowboysmall" target="_blank">CowboySmall.</a></small>
-            <br>
-            <small class="copyright">{{ now.Year }} &copy; {{ with .Site.Params.footer.copyright }}{{ . | markdownify }}{{ end }}</small>
-        </footer>
+  <small class="copyright text-muted">
+    Originally designed by <a class="theme-link" href="https://github.com/xriley/DevResume-Theme"
+      target="_blank">Xiaoying Riley</a>, remixed by <a class="theme-link"
+      href="https://github.com/gabrielelucci/hugo-devresume-theme" target="_blank">Gabriele Lucci</a>. </a></small>
+  <br>
+  <small class="copyright text-muted">
+    Originally ported to Hugo by <a class="theme-link" href="https://github.com/cowboysmall-tools/hugo-devresume-theme"
+      target="_blank">CowboySmall.</a>
+  </small>
+  <br>
+  <small class="copyright">{{ now.Year }} &copy; {{ with .Site.Params.footer.copyright }}{{ . | markdownify }}{{ end
+    }}</small>
+</footer>

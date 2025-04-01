@@ -1,16 +1,23 @@
-
-                <div class="resume-header">
-
-                    <div class="row align-items-center">
-
-                        {{ if .Site.Params.profile.enable }}
-                        {{ partial "profile.html" . }}
-                        {{ end }}
-
-                        {{ if .Site.Params.contact.enable }}
-                        {{ partial "contact.html" . }}
-                        {{ end }}
-
-                    </div><!--//row-->
-
-                </div><!--//resume-header-->
+<div class="resume-header">
+  <div class="row g-0 align-items-center">
+    {{ if .Site.Params.profile.enable }}
+    <div class="resume-title col mb-3 mb-lg-0">
+      <h2 class="resume-name mb-0 text-uppercase">{{ .Site.Params.profile.name }}</h2>
+      <div class="resume-tagline">{{ .Site.Params.profile.tagline }}</div>
+    </div>
+    {{ end }}
+    {{ if .Site.Params.contact.enable }}
+    <div class="resume-contact col-12 col-lg-3 px-lg-3">
+      <ul class="list-unstyled mb-0 d-inline-flex flex-row flex-lg-column">
+        {{ range .Site.Params.contact.list }}
+        <li class="mb-lg-1 pe-3 pe-lg-0 text-truncate">
+          <a class="resume-link" href="{{ .url | safeURL }}" target="_blank">
+            <i class="{{ .icon }} fa-fw fa-lg"></i><span class="d-none d-lg-inline ps-2">{{ .text }}</span>
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+</div>
