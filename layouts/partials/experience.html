@@ -8,7 +8,7 @@
         <h4 class="item-title mb-0">{{ .title }}</h4>
         <div class="item-meta mb-0 ms-auto text-muted">{{ .dates }}</div>
       </div>
-      <div class="item-meta">{{ .company }}</div>
+      <div class="item-meta text-muted">{{ .company }}</div>
     </div>
     <div class="item-content pb-3">
       {{ with .details }}{{ . | markdownify }}{{ end }}
@@ -30,10 +30,10 @@
   <div class="item">
     <div class="item-heading mb-1">
       <h4 class="item-title mb-0">{{ .title }}</h4>
-      <div class="item-meta mb-0">{{ .meta }}</div>
+      <div class="item-meta mb-0 text-muted">{{ .meta }}</div>
     </div>
-    <div class="item-content">
-      <p>{{ .tagline | markdownify }}</p>
+    <div class="item-content pb-3">
+      {{ .tagline | markdownify }}
     </div>
   </div>
   {{ end }}
