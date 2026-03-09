@@ -8,6 +8,8 @@
 <meta name="author" content="{{ .Site.Params.author }}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{{ with .Site.Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
+{{ with .Site.Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+
 
 {{ $dartsassOpts := dict "transpiler" "dartsass" "targetPath" "assets/css/style.css" "enableSourceMap" true
 "sourceMapIncludeSources" true "outputStyle" "compressed" }}
