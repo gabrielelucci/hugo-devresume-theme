@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{ .Site.Params.description }}">
 <meta name="author" content="{{ .Site.Params.author }}">
-
-<link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ with .Site.Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
 
 {{ $dartsassOpts := dict "transpiler" "dartsass" "targetPath" "assets/css/style.css" "enableSourceMap" true
 "sourceMapIncludeSources" true "outputStyle" "compressed" }}
