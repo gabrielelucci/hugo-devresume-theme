@@ -27,7 +27,3 @@ target = "static/assets/css/webfonts"
 [[module.mounts]]
 source = "node_modules/@fontsource"
 target = "static/assets/css/fontsource"
-
-[[module.mounts]]
-source = "node_modules/@fontsource-variable"
-target = "static/assets/css/fontsource/variable"

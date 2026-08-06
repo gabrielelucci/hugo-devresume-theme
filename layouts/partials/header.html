@@ -12,7 +12,7 @@
         {{ range .Site.Params.contact.list }}
         <li class="mb-lg-1 pe-3 pe-lg-0 text-truncate">
           <a class="resume-link" href="{{ .url | safeURL }}" target="_blank">
-            <i class="{{ .icon }} fa-fw fa-lg"></i><span class="d-none d-lg-inline ps-2">{{ .text }}</span>
+            <i class="{{ .icon }} fa-fw fa-lg" aria-hidden="true"></i><span class="d-none d-lg-inline d-print-inline ps-2">{{ .text }}</span>
           </a>
         </li>
         {{ end }}

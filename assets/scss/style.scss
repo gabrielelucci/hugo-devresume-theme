@@ -40,7 +40,10 @@ $theme-colors: (
 );
 
 $font-titles: "Comfortaa", sans-serif;
-$font-paragraphs: 'Ubuntu Sans Mono Variable', monospace;
+// Static (non-variable) faces on purpose: Chromium cannot embed a variable-font
+// instance when printing, and falls back to Type 3 glyph procedures, which
+// leaves the PDF text layer unselectable and unparseable by ATS software.
+$font-paragraphs: 'Ubuntu Sans Mono', monospace;
 
 $fa-font-path: "./webfonts";
 
@@ -50,7 +53,7 @@ $fa-font-path: "./webfonts";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import url("fontsource/variable/ubuntu-sans-mono/index.css");
+@import url("fontsource/ubuntu-sans-mono/latin.css");
 @import url("fontsource/comfortaa/latin.css");
 
 /*************************** DevResume Styles *********************************/
@@ -61,7 +64,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: $theme-text-color-secondary;
   font-family: $font-paragraphs;
-  font-weight: 404;
+  font-weight: 400;
 }
 
 h1,
@@ -245,6 +248,9 @@ hr {
 
 @media print {
 
+  // NOTE: the layout uses .container-xl, so this rule currently matches nothing.
+  // Correcting the selector widens the printed margins, so it is left as-is on
+  // purpose until the padding is retuned.
   .main-wrapper>.container-md {
     max-width: none !important;
     padding: 1rem 3rem 0 3rem !important;
@@ -255,6 +261,22 @@ hr {
     margin: 0 !important;
     border: none !important;
     box-shadow: none !important;
+  }
+
+  // The printed page is narrower than the `lg` breakpoint, so the contact
+  // details fall back to the mobile layout: icons only, no text. Lay them out
+  // as a wrapping row instead, so address and email make it into the PDF.
+  .resume-contact {
+    ul {
+      flex-wrap: wrap;
+      column-gap: 1rem;
+    }
+
+    li {
+      // undo .text-truncate, which would clip the text it has room for
+      overflow: visible !important;
+      white-space: normal !important;
+    }
   }
 
 }
