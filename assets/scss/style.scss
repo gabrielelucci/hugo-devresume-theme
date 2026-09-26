@@ -142,7 +142,7 @@ hr {
   &:before {
     content: "";
     display: inline-block;
-    width: 8px;
+    width: 0.5rem;
     height: 75%;
     background: $theme-color-primary;
     position: absolute;
@@ -212,6 +212,37 @@ hr {
 
 }
 
+// When the aside is laid out horizontally, its sections fill an 800px-tall
+// column, then overflow into the next one. Not on phones, where there is no
+// room for a second column, nor beside the main column, where the aside is
+// too narrow for one.
+.resume-aside-sections {
+  @include media-breakpoint-between(sm, lg) {
+    column-width: 13rem;
+    column-gap: 2rem;
+    column-fill: auto;
+    max-height: 800px;
+    padding-top: 1rem;
+
+    // Space the sections with margins: unlike padding, a margin is dropped
+    // where a column starts, so every column's content lines up at the top.
+    > section {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 2rem;
+    }
+
+    // Keep entries whole, and each section in one column when it fits, so a
+    // heading is never separated from its section. Browsers ignore
+    // `break-after: avoid` inside columns.
+    > section,
+    li,
+    .item {
+      break-inside: avoid;
+    }
+  }
+}
+
 .resume-education-list,
 .resume-awards-list {
   font-size: 1rem;
@@ -246,14 +277,66 @@ hr {
   }
 }
 
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
 @media print {
 
-  // NOTE: the layout uses .container-xl, so this rule currently matches nothing.
-  // Correcting the selector widens the printed margins, so it is left as-is on
-  // purpose until the padding is retuned.
-  .main-wrapper>.container-md {
+  // Everything is rem-based, so this scales the whole resume down to paper
+  // size. 8px is the largest size that keeps the current content on one page.
+  html {
+    font-size: 8px;
+  }
+
+  body {
+    line-height: 1.35;
+  }
+
+  .resume-title {
+    .resume-name {
+      font-size: 2rem;
+    }
+
+    .resume-tagline {
+      font-size: 1.25rem;
+    }
+  }
+
+  // Tighten the vertical rhythm: the spacing utilities in the templates are
+  // sized for screen.
+  hr {
+    margin: 0.75rem 0;
+  }
+
+  .resume-body section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .resume-section-heading {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .resume-main .item-content {
+    padding-bottom: 0.5rem !important;
+
+    p {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  .resume-body li,
+  .resume-intro p {
+    margin-bottom: 0.25rem !important;
+  }
+
+  // The page margins come from @page.
+  .main-wrapper>.container-xl {
     max-width: none !important;
-    padding: 1rem 3rem 0 3rem !important;
+    padding: 0 !important;
   }
 
   .resume-wrapper {
@@ -277,6 +360,54 @@ hr {
       overflow: visible !important;
       white-space: normal !important;
     }
+  }
+
+  .resume-profile-image {
+    max-width: 120px;
+  }
+
+  // Print the accent colours even with "Background graphics" off.
+  .resume-section-heading:before,
+  .resume-name {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  // Links stay clickable in the PDF; the underlines are just noise on paper.
+  .resume-wrapper a,
+  .resume-wrapper a:hover {
+    text-decoration: none;
+  }
+
+  // Page breaks: keep work entries whole (projects are too long to), keep
+  // headings with what follows them, and move the sidebar to the next page
+  // rather than splitting its columns.
+  .work-section .item,
+  .resume-aside-sections {
+    break-inside: avoid;
+  }
+
+  // On paper, spread the sidebar evenly over as many columns as fit, rather
+  // than filling 800px-tall columns: an unfilled column still takes up the
+  // full 800px.
+  .resume-aside-sections {
+    column-fill: balance;
+    max-height: none;
+
+    > section {
+      break-inside: auto;
+    }
+  }
+
+  .resume-section-heading,
+  .item-heading {
+    break-after: avoid;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
   }
 
 }

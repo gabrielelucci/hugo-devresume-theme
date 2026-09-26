@@ -1,6 +1,6 @@
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-1 g-0">
+<div class="resume-aside-sections">
   {{ if .Site.Params.skills.enable }}
-  <section class="skills-section col py-3">
+  <section class="skills-section py-3">
     <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "skills" }}</h4>
     {{ range .Site.Params.skills.list }}
     <div class="item">
@@ -14,35 +14,33 @@
     {{ end }}
   </section>
   {{ end }}
-  <div class="col">
-    {{ if .Site.Params.education.enable }}
-    <section class="education-section py-3">
-      <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "education" }}</h4>
-      <ul class="list-unstyled resume-education-list">
-        {{ range .Site.Params.education.list }}
-        <li class="mb-3">
-          <div class="resume-degree font-weight-bold">{{ .degree }}</div>
-          <div class="resume-degree-time text-muted">{{ .dates }}</div>
-          <div class="resume-degree-org">{{ .university }}</div>
-          <div class="resume-degree-org">{{ .city }}</div>
-        </li>
-        {{ end }}
-      </ul>
-    </section>
-    {{ end }}
-    {{ if .Site.Params.languages.enable }}
-    <section class="languages-section py-3">
-      <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "languages" }}</h4>
-      <ul class="list-unstyled resume-lang-list">
-        {{ range .Site.Params.languages.list }}
-        <li class="mb-2">{{ .name }} <span class="text-muted">({{ .level }})</span></li>
-        {{ end }}
-      </ul>
-    </section>
-    {{ end }}
-  </div>
+  {{ if .Site.Params.education.enable }}
+  <section class="education-section py-3">
+    <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "education" }}</h4>
+    <ul class="list-unstyled resume-education-list">
+      {{ range .Site.Params.education.list }}
+      <li class="mb-3">
+        <div class="resume-degree font-weight-bold">{{ .degree }}</div>
+        <div class="resume-degree-time text-muted">{{ .dates }}</div>
+        <div class="resume-degree-org">{{ .university }}</div>
+        <div class="resume-degree-org">{{ .city }}</div>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+  {{ if .Site.Params.languages.enable }}
+  <section class="languages-section py-3">
+    <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "languages" }}</h4>
+    <ul class="list-unstyled resume-lang-list">
+      {{ range .Site.Params.languages.list }}
+      <li class="mb-2">{{ .name }} <span class="text-muted">({{ .level }})</span></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
   {{ if .Site.Params.awards.enable }}
-  <section class="awards-section col py-3">
+  <section class="awards-section py-3">
     <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "awards" }}</h4>
     <ul class="list-unstyled resume-awards-list">
       {{ range .Site.Params.awards.list }}
@@ -56,7 +54,7 @@
   </section>
   {{ end }}
   {{ if .Site.Params.interests.enable }}
-  <section class="interests-section col py-3">
+  <section class="interests-section py-3">
     <h4 class="text-uppercase resume-section-heading mb-3">{{ i18n "interests" }}</h4>
     <ul class="list-unstyled resume-interests-list mb-0">
       {{ range .Site.Params.interests.list }}
