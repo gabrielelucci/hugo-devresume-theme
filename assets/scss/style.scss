@@ -67,15 +67,17 @@ body {
   font-weight: 400;
 }
 
+// Only the name and section headings use the display font; item titles are h3
+// for document structure, but look like body text.
 h1,
-h2,
-h3,
-h4 {
+h2 {
   color: $theme-text-color-primary;
   font-family: $font-titles;
   font-weight: 700;
 }
 
+h3,
+h4,
 h5,
 h6 {
   color: $theme-text-color-primary;
