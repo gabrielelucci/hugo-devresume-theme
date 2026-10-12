@@ -1,0 +1,20 @@
+- id: awards
+  translation: Riconoscimenti
+- id: education
+  translation: Formazione
+- id: experiences
+  translation: Esperienza lavorativa
+- id: information
+  translation: Informazioni
+- id: interests
+  translation: Interessi
+- id: languages
+  translation: Lingue
+- id: projects
+  translation: Progetti
+- id: skills
+  translation: Competenze
+- id: present
+  translation: Presente
+- id: summary
+  translation: Profilo

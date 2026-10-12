@@ -4,6 +4,19 @@
     <div class="resume-title col mb-3 mb-lg-0">
       <h1 class="resume-name mb-0 text-uppercase">{{ .Site.Params.profile.name }}</h1>
       <div class="resume-tagline">{{ .Site.Params.profile.tagline }}</div>
+      {{ if .IsTranslated }}
+      <nav class="resume-lang-switch d-print-none mt-2">
+        {{ range $i, $t := .AllTranslations }}
+        {{ if $i }}<span class="text-muted" aria-hidden="true">·</span>{{ end }}
+        {{ if eq $t.Language.Lang $.Language.Lang }}
+        <span aria-current="page">{{ upper $t.Language.Lang }}</span>
+        {{ else }}
+        <a class="resume-link" href="{{ $t.RelPermalink }}" hreflang="{{ $t.Language.LanguageCode }}" lang="{{ $t.Language.LanguageCode }}"
+          title="{{ $t.Language.LanguageName }}">{{ upper $t.Language.Lang }}</a>
+        {{ end }}
+        {{ end }}
+      </nav>
+      {{ end }}
     </div>
     {{ end }}
     {{ if .Site.Params.contact.enable }}

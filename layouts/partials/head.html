@@ -9,13 +9,22 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{{ with .Site.Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
 {{ with .Site.Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+{{ if .IsTranslated }}
+{{ range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ (index .AllTranslations 0).Permalink }}">
+{{ end }}
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{ .Site.Title }}">
 <meta property="og:description" content="{{ .Site.Params.description }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ with .Site.Params.canonical }}{{ . }}{{ else }}{{ .Permalink }}{{ end }}">
-<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+<meta property="og:locale" content="{{ replace .Site.LanguageCode "-" "_" }}">
+{{ range .Translations }}
+<meta property="og:locale:alternate" content="{{ replace .Language.LanguageCode "-" "_" }}">
+{{ end }}
 {{ with .Site.Params.profile.avatar }}
 <meta property="og:image" content="{{ $.Site.BaseURL }}assets/images/{{ . }}">
 {{ end }}
