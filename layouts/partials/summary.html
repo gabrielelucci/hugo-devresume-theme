@@ -1,5 +1,6 @@
 <hr>
-<div class="resume-intro">
+<section class="resume-intro">
+  <h2 class="text-uppercase resume-section-heading mb-3">{{ i18n "summary" }}</h2>
   <div class="media flex-column flex-md-row align-items-center">
     {{ if .Site.Params.profile.avatar }}
     <img class="resume-profile-image mb-3 mx-md-0 me-md-5 ms-md-0 rounded mx-auto"
@@ -9,4 +10,4 @@
       {{ .Site.Params.summary.text | markdownify }}
     </div>
   </div>
-</div>
+</section>
