@@ -29,6 +29,9 @@
         {{ if .Site.Params.social.enable }}
         {{ partial "social.html" . }}
         {{ end }}
+        {{ with .Site.Params.legal.text }}
+        <p class="resume-legal text-muted mt-3 mb-0">{{ . | markdownify }}</p>
+        {{ end }}
       </article>
     </div>
     {{ partial "footer.html" . }}
