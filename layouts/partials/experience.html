@@ -6,7 +6,7 @@
     <div class="item-heading mb-1">
       <div class="d-flex">
         <h3 class="item-title mb-0">{{ .title }}</h3>
-        <div class="item-meta mb-0 ms-auto text-muted">{{ .dates }}</div>
+        <div class="item-meta mb-0 ms-auto text-muted text-nowrap ps-2">{{ partial "dates.html" . }}</div>
       </div>
       <div class="item-meta text-muted">{{ .company }}</div>
     </div>

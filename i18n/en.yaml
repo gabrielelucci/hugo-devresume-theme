@@ -14,5 +14,7 @@
   translation: Projects
 - id: skills
   translation: Skills
+- id: present
+  translation: Present
 - id: summary
   translation: Summary

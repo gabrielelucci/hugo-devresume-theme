@@ -1,0 +1,16 @@
+{{- /*
+  Renders an item's date range. Prefers `start`/`end` ("YYYY-MM"), whose month
+  names are localized to the page language; a missing `end` means ongoing.
+  Falls back to the free-form `dates` string.
+*/ -}}
+{{- with .start -}}
+  {{- time.Format "Jan 2006" (time.AsTime (printf "%s-01" .)) -}}
+  {{- " – " -}}
+  {{- with $.end -}}
+    {{- time.Format "Jan 2006" (time.AsTime (printf "%s-01" .)) -}}
+  {{- else -}}
+    {{- i18n "present" -}}
+  {{- end -}}
+{{- else -}}
+  {{- .dates -}}
+{{- end -}}
