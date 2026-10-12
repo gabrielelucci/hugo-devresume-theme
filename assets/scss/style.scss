@@ -403,21 +403,48 @@ hr {
 
   // Page breaks: keep work entries whole (projects are too long to), keep
   // headings with what follows them, and move the sidebar to the next page
-  // rather than splitting its columns.
+  // rather than splitting it.
   .work-section .item,
   .resume-aside-sections {
     break-inside: avoid;
   }
 
-  // On paper, spread the sidebar evenly over as many columns as fit, rather
-  // than filling 800px-tall columns: an unfilled column still takes up the
-  // full 800px.
+  // On paper, the sidebar sits under the main column as plain lines of text,
+  // e.g. "Programming: Python, Go". Columns, or blocks side by side, come out
+  // of the PDF text layer interleaved, which garbles them for ATS parsers.
   .resume-aside-sections {
-    column-fill: balance;
+    columns: auto;
     max-height: none;
+    padding-top: 0;
 
     > section {
-      break-inside: auto;
+      margin-bottom: 0;
+    }
+
+    .item {
+      margin-bottom: 0.25rem;
+    }
+
+    .item-title,
+    .resume-skills-list,
+    .resume-skills-list li,
+    .resume-education-list li > div,
+    .resume-lang-list li {
+      display: inline;
+    }
+
+    .item-title {
+      font-size: 1rem;
+
+      &::after {
+        content: ": ";
+      }
+    }
+
+    .resume-skills-list li + li::before,
+    .resume-education-list li > div + div::before,
+    .resume-lang-list li + li::before {
+      content: " · ";
     }
   }
 
