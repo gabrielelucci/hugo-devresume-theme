@@ -28,6 +28,22 @@ with some tweaks to suit my needs.
 - Improved layout for small devices
 - Fonts, using Anonymous Pro for paragraphs and Comfortaa for titles
 - Everything is bundled and managed by npm
+- Multilingual: English and Italian strings, a language switcher and `hreflang` links
+- ATS-friendly print: one A4 page, real text (no icon glyphs) for contact details,
+  semantic heading levels
+
+### Config notes
+
+- Contact items take an optional `label` (printed in place of the icon, e.g. `Email: …`)
+  and `print = false` to leave an item off the printout.
+- A contact item with `env = "HUGO_…"` takes its text from that environment variable at
+  build time, appended to `url` for the link (e.g. `url = "tel:"`), and is left out when
+  the variable is unset. Use it for details that must stay out of the repository and the
+  published site, such as a phone number.
+- Experience items take `start`/`end` as `"YYYY-MM"`; month names follow the site
+  language, and a missing `end` reads as "Present". The free-form `dates` still works.
+- `params.legal.text`, when set, is printed at the bottom of the resume (e.g. a GDPR
+  consent line for Italian CVs).
 
 ## Getting Started
 
