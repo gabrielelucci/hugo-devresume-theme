@@ -29,6 +29,8 @@ with some tweaks to suit my needs.
 - Fonts, using Anonymous Pro for paragraphs and Comfortaa for titles
 - Everything is bundled and managed by npm
 - Multilingual: English and Italian strings, a language switcher and `hreflang` links
+- Refreshed look: warm neutrals around the original rose, a floating sheet, and a dark
+  colour scheme that follows the system setting (print always uses the light one)
 - ATS-friendly print: one A4 page, real text (no icon glyphs) for contact details,
   semantic heading levels
 

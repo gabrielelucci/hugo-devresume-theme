@@ -10,16 +10,18 @@
  */
 
 /*************************** Theme Colours****************************/
-// Define theme colour scheme
+// Define theme colour scheme. The rose stays the original DevResume accent; the
+// neutrals carry a slight warm bias towards it. Colours that change with the
+// colour scheme live in CSS custom properties (see "Theme Tokens" below).
 $theme-color-primary: #B75D69;
-$theme-text-color: black;
-$theme-text-color-primary: lighten($theme-text-color, 8%);
-$theme-text-color-secondary: lighten($theme-text-color, 17%);
-$theme-text-color-light: lighten($theme-text-color, 33%);
+$theme-text-color: #1f1b1c;
+$theme-text-color-primary: $theme-text-color;
+$theme-text-color-secondary: #3b3537;
+$theme-text-color-light: #6b6467;
 
 $border-width: 1px;
 $border-style: solid;
-$border-color: lighten($theme-text-color, 92%);
+$border-color: #ebe6e7;
 $border-color-translucent: rgba($theme-text-color, .175);
 
 /*************************** Variables Section ********************************/
@@ -58,20 +60,71 @@ $fa-font-path: "./webfonts";
 
 /*************************** DevResume Styles *********************************/
 
+/*************************** Theme Tokens *************************************/
+// The DevResume design system's colour tokens: light by default, dark when the
+// system asks for it, and always light on paper (see @media print).
+:root {
+  --dr-canvas: #f7f4f4;
+  --dr-paper: #ffffff;
+  --dr-line: #{$border-color};
+  --dr-ink: #{$theme-text-color};
+  --dr-ink-body: #{$theme-text-color-secondary};
+  --dr-ink-muted: #{$theme-text-color-light};
+  --dr-ink-faint: #8a8385;
+  --dr-rose: #{$theme-color-primary};
+  --dr-rose-text: #a54f5b;
+  --dr-rose-soft: #f7e9eb;
+  --dr-sheet: 0 1px 2px rgba(31, 27, 28, 0.04), 0 12px 32px rgba(31, 27, 28, 0.06);
+
+  // Hand the tokens to Bootstrap, so its utilities (.text-muted, borders)
+  // follow the colour scheme too.
+  --bs-body-bg: var(--dr-canvas);
+  --bs-body-color: var(--dr-ink-body);
+  --bs-emphasis-color: var(--dr-ink);
+  --bs-secondary-color: var(--dr-ink-muted);
+  --bs-border-color: var(--dr-line);
+  --bs-link-color-rgb: 31, 27, 28;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --dr-canvas: #141213;
+    --dr-paper: #1d1a1b;
+    --dr-line: #342f31;
+    --dr-ink: #f3eef0;
+    --dr-ink-body: #d9d3d5;
+    --dr-ink-muted: #a79fa2;
+    --dr-ink-faint: #7a7275;
+    --dr-rose: #e09aa4;
+    --dr-rose-text: #e09aa4;
+    --dr-rose-soft: #3a2428;
+    --dr-sheet: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
+    --bs-link-color-rgb: 243, 238, 240;
+    color-scheme: dark;
+  }
+}
+
 /*************************** Theme Generic ************************************/
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $theme-text-color-secondary;
+  background: var(--dr-canvas);
+  color: var(--dr-ink-body);
   font-family: $font-paragraphs;
   font-weight: 400;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--dr-rose-soft);
+  color: var(--dr-ink);
 }
 
 // Only the name and section headings use the display font; item titles are h3
 // for document structure, but look like body text.
 h1,
 h2 {
-  color: $theme-text-color-primary;
+  color: var(--dr-ink);
   font-family: $font-titles;
   font-weight: 700;
 }
@@ -80,54 +133,67 @@ h3,
 h4,
 h5,
 h6 {
-  color: $theme-text-color-primary;
+  color: var(--dr-ink);
   font-weight: 700;
+}
 
+a:focus-visible {
+  outline: 2px solid var(--dr-rose-text);
+  outline-offset: 2px;
+  border-radius: 0.375rem;
 }
 
 a.theme-link {
-  color: $theme-text-color-primary;
-  text-decoration: underline;
-  -webkit-text-decoration-color: rgba($theme-text-color-primary, 0.3);
-  text-decoration-color: rgba($theme-text-color-primary, 0.3);
+  color: var(--dr-ink-muted);
+  text-decoration: underline $border-width var(--dr-ink-faint);
+  text-underline-offset: 0.18em;
 
   &:hover {
-    color: $theme-color-primary;
-    -webkit-text-decoration-color: rgba($theme-color-primary, 0.8);
-    text-decoration-color: rgba($theme-color-primary, 0.8);
+    color: var(--dr-rose-text);
+    text-decoration-color: var(--dr-rose-text);
   }
+}
+
+.text-muted {
+  color: var(--dr-ink-muted) !important;
 }
 
 /*************************** Resume *******************************************/
 
 hr {
-  border-top: $border-width $border-style $border-color;
+  border-top: $border-width $border-style var(--dr-line);
   opacity: 1;
 }
 
 .resume-wrapper {
-  border: 1px solid rgba(0, 0, 0, 0.025);
+  background: var(--dr-paper);
 
-  $underline-thickness: 0.08rem;
-  $underline-offset: 0.1rem;
+  // The sheet floats on the canvas once there is room around it.
+  @include media-breakpoint-up(xl) {
+    border: $border-width $border-style var(--dr-line);
+    border-radius: 0.5rem;
+    box-shadow: var(--dr-sheet);
+  }
+
+  $underline-thickness: 1.3px;
+  $underline-offset: 0.18em;
 
   a {
     &:hover {
-      color: $theme-color-primary;
-      text-decoration: underline wavy $theme-text-color-primary $underline-thickness;
+      color: var(--dr-rose-text);
+      text-decoration: underline wavy var(--dr-rose-text) $underline-thickness;
       text-underline-offset: $underline-offset;
     }
 
-    color: $theme-text-color-primary;
-    text-decoration: underline dotted $theme-text-color-light $underline-thickness;
+    color: var(--dr-ink);
+    text-decoration: underline dotted var(--dr-ink-faint) $underline-thickness;
     text-underline-offset: $underline-offset;
   }
 
   a.resume-link {
     &:hover {
-      color: $theme-text-color-primary;
-      text-decoration: underline dotted $theme-text-color-light $underline-thickness;
-      text-underline-offset: $underline-offset;
+      color: var(--dr-rose-text);
+      text-decoration: none;
     }
 
     text-decoration-line: none;
@@ -138,18 +204,19 @@ hr {
   position: relative;
   padding-left: 1rem;
   font-size: 1.50rem;
+  line-height: 1.3;
   letter-spacing: 0.05rem;
-  color: $theme-color-primary;
+  color: var(--dr-rose);
 
   &:before {
     content: "";
-    display: inline-block;
-    width: 0.5rem;
-    height: 75%;
-    background: $theme-color-primary;
     position: absolute;
     left: 0;
-    top: 0.10rem;
+    top: 0.2em;
+    bottom: 0.25em;
+    width: 0.375rem;
+    border-radius: 2px;
+    background: var(--dr-rose);
   }
 }
 
@@ -158,21 +225,32 @@ hr {
 
   .resume-name {
     font-size: 2.625rem;
+    line-height: 1.15;
     font-weight: 700;
     letter-spacing: 0.10rem;
-    color: $theme-color-primary;
+    color: var(--dr-rose);
   }
 
   .resume-tagline {
     font-size: 1.5rem;
+    line-height: 1.35;
     letter-spacing: 0.05rem;
     font-weight: 600;
+    color: var(--dr-ink-body);
   }
 }
 
 .resume-contact {
-  border-left: $border-width $border-style $border-color;
+  border-left: $border-width $border-style var(--dr-line);
   font-size: 0.875rem;
+
+  i {
+    color: var(--dr-ink-muted);
+  }
+
+  a:hover i {
+    color: var(--dr-rose-text);
+  }
 
   // Cap the list at the column width, so .text-truncate clips long links.
   ul,
@@ -181,17 +259,28 @@ hr {
   }
 }
 
+// A circle with a thin rose-tinted ring.
 .resume-profile-image {
-  max-width: 180px;
+  max-width: 160px;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 0.25rem var(--dr-rose-soft);
 }
 
 .resume-lang-switch {
+  font-family: $font-paragraphs;
   font-size: 0.875rem;
   letter-spacing: 0.05rem;
+  color: var(--dr-ink-muted);
+
+  [aria-current] {
+    color: var(--dr-ink);
+    font-weight: 700;
+  }
 }
 
 .resume-legal {
   font-size: 0.75rem;
+  line-height: 1.5;
 }
 
 .resume-intro {
@@ -200,11 +289,12 @@ hr {
 
 .resume-main {
   .item-title {
-    font-size: 1.250rem;
+    font-size: 1.125rem;
   }
 
   .item-meta {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .item-content {
@@ -217,7 +307,7 @@ hr {
 }
 
 .resume-aside {
-  border-left: $border-width $border-style $border-color;
+  border-left: $border-width $border-style var(--dr-line);
 
   .item {
     font-size: 1rem;
@@ -278,6 +368,18 @@ hr {
 
 .resume-social-list {
   font-size: 0.875rem;
+
+  i {
+    color: var(--dr-ink-muted);
+  }
+
+  a:hover i {
+    color: var(--dr-rose-text);
+  }
+}
+
+.footer {
+  font-size: 0.8125rem;
 }
 
 .fa-heart {
@@ -307,8 +409,11 @@ hr {
     font-size: 8px;
   }
 
+  // Paper is always the light palette (the dark tokens are screen-only), on
+  // white even with "Background graphics" on.
   body {
     line-height: 1.35;
+    background: #fff;
   }
 
   .resume-title {
@@ -360,7 +465,32 @@ hr {
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
+  }
+
+  // Dates go under the title: right-aligned across the page they sit too far
+  // from what they date.
+  .resume-main .item-heading .d-flex {
+    display: block !important;
+
+    .item-meta {
+      padding-left: 0 !important;
+    }
+  }
+
+  // Keep the photo beside the summary, as on screen, rather than stacked above
+  // it: the printed page is narrower than the `md` breakpoint.
+  .resume-intro .d-flex {
+    flex-direction: row !important;
+
+    .resume-profile-image {
+      margin: 0 2rem 0 0 !important;
+    }
+
+    > div {
+      margin-top: 0 !important;
+    }
   }
 
   // The printed page is narrower than the `lg` breakpoint, so the contact
@@ -386,6 +516,7 @@ hr {
 
   .resume-profile-image {
     max-width: 120px;
+    box-shadow: none;
   }
 
   // Print the accent colours even with "Background graphics" off.
@@ -429,7 +560,8 @@ hr {
     .resume-skills-list,
     .resume-skills-list li,
     .resume-education-list li > div,
-    .resume-lang-list li {
+    .resume-lang-list li,
+    .resume-interests-list li {
       display: inline;
     }
 
@@ -443,7 +575,8 @@ hr {
 
     .resume-skills-list li + li::before,
     .resume-education-list li > div + div::before,
-    .resume-lang-list li + li::before {
+    .resume-lang-list li + li::before,
+    .resume-interests-list li + li::before {
       content: " · ";
     }
   }
