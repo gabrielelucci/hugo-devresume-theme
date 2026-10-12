@@ -173,6 +173,12 @@ hr {
 .resume-contact {
   border-left: $border-width $border-style $border-color;
   font-size: 0.875rem;
+
+  // Cap the list at the column width, so .text-truncate clips long links.
+  ul,
+  li {
+    max-width: 100%;
+  }
 }
 
 .resume-profile-image {
@@ -366,6 +372,11 @@ hr {
       // undo .text-truncate, which would clip the text it has room for
       overflow: visible !important;
       white-space: normal !important;
+    }
+
+    // The icons are hidden on paper, so drop the gap they left for them.
+    a > span {
+      padding-left: 0 !important;
     }
   }
 

@@ -23,9 +23,11 @@
     <div class="resume-contact col-12 col-lg-3 px-lg-3">
       <ul class="list-unstyled mb-0 d-inline-flex flex-row flex-lg-column">
         {{ range .Site.Params.contact.list }}
-        <li class="mb-lg-1 pe-3 pe-lg-0 text-truncate">
-          <a class="resume-link" href="{{ .url | safeURL }}" target="_blank">
-            <i class="{{ .icon }} fa-fw fa-lg" aria-hidden="true"></i><span class="d-none d-lg-inline d-print-inline ps-2">{{ .text }}</span>
+        <li class="mb-lg-1 pe-3 pe-lg-0 text-truncate{{ if eq .print false }} d-print-none{{ end }}">
+          <a class="resume-link" href="{{ .url | safeURL }}" target="_blank" title="{{ .text }}">
+            <i class="{{ .icon }} fa-fw fa-lg d-print-none" aria-hidden="true"></i>
+            {{- /* On paper, a text label replaces the icon: icon glyphs are unreadable to ATS parsers. */ -}}
+            <span class="d-none d-lg-inline d-print-inline ps-2">{{ with .label }}<span class="d-none d-print-inline">{{ . }}: </span>{{ end }}{{ .text }}</span>
           </a>
         </li>
         {{ end }}
