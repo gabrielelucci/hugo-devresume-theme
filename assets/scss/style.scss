@@ -560,7 +560,8 @@ hr {
     .resume-skills-list,
     .resume-skills-list li,
     .resume-education-list li > div,
-    .resume-lang-list li {
+    .resume-lang-list li,
+    .resume-interests-list li {
       display: inline;
     }
 
@@ -574,7 +575,8 @@ hr {
 
     .resume-skills-list li + li::before,
     .resume-education-list li > div + div::before,
-    .resume-lang-list li + li::before {
+    .resume-lang-list li + li::before,
+    .resume-interests-list li + li::before {
       content: " · ";
     }
   }
