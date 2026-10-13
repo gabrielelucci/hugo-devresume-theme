@@ -469,6 +469,30 @@ hr {
     box-shadow: none !important;
   }
 
+  // Dates go under the title: right-aligned across the page they sit too far
+  // from what they date.
+  .resume-main .item-heading .d-flex {
+    display: block !important;
+
+    .item-meta {
+      padding-left: 0 !important;
+    }
+  }
+
+  // Keep the photo beside the summary, as on screen, rather than stacked above
+  // it: the printed page is narrower than the `md` breakpoint.
+  .resume-intro .d-flex {
+    flex-direction: row !important;
+
+    .resume-profile-image {
+      margin: 0 2rem 0 0 !important;
+    }
+
+    > div {
+      margin-top: 0 !important;
+    }
+  }
+
   // The printed page is narrower than the `lg` breakpoint, so the contact
   // details fall back to the mobile layout: icons only, no text. Lay them out
   // as a wrapping row instead, so address and email make it into the PDF.
